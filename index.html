@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bewerte Vocap</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Grundlegendes Styling */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: transparent; /* Heller Hintergrund für die gesamte Seite */
+        border-radius: 1px solid black;
+      }
+      .container {
+        max-width: 400px; /* Anpassung für mobile Ansicht */
+        width: 90%;
+        background: #ffffff; /* Einheitlicher Hintergrund */
+        padding: 30px; /* Mehr Polsterung für ein luftigeres Design */
+        border-radius: 12px;
+        border-radius: 1px solid black;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px; /* Größere Schriftgröße für den Titel */
+        color: #343a40; /* Dunkle Schriftfarbe */
+      }
+      .rating-group {
+        margin-bottom: 15px;
+      }
+      .rating-group label {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 5px;
+        color: #495057; /* Dunklere Farbe für die Labels */
+      }
+      .rating {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .rating input {
+        display: none;
+      }
+      .rating label {
+        font-size: 28px; /* Größere Sterne */
+        color: #ddd;
+        cursor: pointer;
+      }
+      .rating input:checked ~ label,
+      .rating label:hover,
+      .rating label:hover ~ label {
+        color: #ffcc00; /* Farbänderung für Sterne bei Hover und Auswahl */
+      }
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        resize: vertical;
+        margin-bottom: 15px;
+        font-size: 16px; /* Größere Schriftgröße für Eingabefelder */
+        color: #495057; /* Dunkle Schriftfarbe */
+      }
+      button {
+        width: 100%;
+        padding: 12px; /* Größere Polsterung für den Button */
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px; /* Größere Schriftgröße für den Button */
+        cursor: pointer;
+        transition: background-color 0.3s; /* Sanfter Übergang */
+      }
+      button:hover {
+        background-color: #0056b3; /* Dunklere Farbe bei Hover */
+      }
+      #message {
+        text-align: center;
+        margin-top: 15px;
+        color: #28a745; /* Erfolgreiche Nachrichtenfarbe */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bewerte Vocap</h1>
+      <form id="ratingForm">
+        <input
+          type="email"
+          name="email"
+          placeholder="Deine E-Mail (erforderlich)"
+          required
+        />
+
+        <input type="text" name="name" placeholder="Dein Name (optional)" />
+
+        <div class="rating-group">
+          <label>Design</label>
+          <div class="rating" data-category="design">
+            <input type="radio" name="design" value="5" id="design5" /><label
+              for="design5"
+              >&#9733;</label
+            >
+            <input type="radio" name="design" value="4" id="design4" /><label
+              for="design4"
+              >&#9733;</label
+            >
+            <input type="radio" name="design" value="3" id="design3" /><label
+              for="design3"
+              >&#9733;</label
+            >
+            <input type="radio" name="design" value="2" id="design2" /><label
+              for="design2"
+              >&#9733;</label
+            >
+            <input type="radio" name="design" value="1" id="design1" /><label
+              for="design1"
+              >&#9733;</label
+            >
+          </div>
+        </div>
+
+        <div class="rating-group">
+          <label>Benutzerfreundlichkeit</label>
+          <div class="rating" data-category="usability">
+            <input
+              type="radio"
+              name="usability"
+              value="5"
+              id="usability5"
+            /><label for="usability5">&#9733;</label>
+            <input
+              type="radio"
+              name="usability"
+              value="4"
+              id="usability4"
+            /><label for="usability4">&#9733;</label>
+            <input
+              type="radio"
+              name="usability"
+              value="3"
+              id="usability3"
+            /><label for="usability3">&#9733;</label>
+            <input
+              type="radio"
+              name="usability"
+              value="2"
+              id="usability2"
+            /><label for="usability2">&#9733;</label>
+            <input
+              type="radio"
+              name="usability"
+              value="1"
+              id="usability1"
+            /><label for="usability1">&#9733;</label>
+          </div>
+        </div>
+
+        <div class="rating-group">
+          <label>Ausgefallenheit</label>
+          <div class="rating" data-category="originality">
+            <input
+              type="radio"
+              name="originality"
+              value="5"
+              id="originality5"
+            /><label for="originality5">&#9733;</label>
+            <input
+              type="radio"
+              name="originality"
+              value="4"
+              id="originality4"
+            /><label for="originality4">&#9733;</label>
+            <input
+              type="radio"
+              name="originality"
+              value="3"
+              id="originality3"
+            /><label for="originality3">&#9733;</label>
+            <input
+              type="radio"
+              name="originality"
+              value="2"
+              id="originality2"
+            /><label for="originality2">&#9733;</label>
+            <input
+              type="radio"
+              name="originality"
+              value="1"
+              id="originality1"
+            /><label for="originality1">&#9733;</label>
+          </div>
+        </div>
+
+        <div class="rating-group">
+          <label>Spaßfaktor</label>
+          <div class="rating" data-category="fun">
+            <input type="radio" name="fun" value="5" id="fun5" /><label
+              for="fun5"
+              >&#9733;</label
+            >
+            <input type="radio" name="fun" value="4" id="fun4" /><label
+              for="fun4"
+              >&#9733;</label
+            >
+            <input type="radio" name="fun" value="3" id="fun3" /><label
+              for="fun3"
+              >&#9733;</label
+            >
+            <input type="radio" name="fun" value="2" id="fun2" /><label
+              for="fun2"
+              >&#9733;</label
+            >
+            <input type="radio" name="fun" value="1" id="fun1" /><label
+              for="fun1"
+              >&#9733;</label
+            >
+          </div>
+        </div>
+
+        <div class="rating-group">
+          <label>Lernfaktor</label>
+          <div class="rating" data-category="learning">
+            <input
+              type="radio"
+              name="learning"
+              value="5"
+              id="learning5"
+            /><label for="learning5">&#9733;</label>
+            <input
+              type="radio"
+              name="learning"
+              value="4"
+              id="learning4"
+            /><label for="learning4">&#9733;</label>
+            <input
+              type="radio"
+              name="learning"
+              value="3"
+              id="learning3"
+            /><label for="learning3">&#9733;</label>
+            <input
+              type="radio"
+              name="learning"
+              value="2"
+              id="learning2"
+            /><label for="learning2">&#9733;</label>
+            <input
+              type="radio"
+              name="learning"
+              value="1"
+              id="learning1"
+            /><label for="learning1">&#9733;</label>
+          </div>
+        </div>
+
+        <textarea
+          name="feedback"
+          placeholder="Zusätzliche Kommentare"
+        ></textarea>
+        <button type="submit">Absenden</button>
+        <div id="message"></div>
+      </form>
+    </div>
+
+    <!-- EmailJS Integration Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("9n_IzzLSxM5ouT5z2"); // YOUR_USER_ID hier einfügen
+      })();
+
+      document
+        .getElementById("ratingForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name =
+            document.querySelector('input[name="name"]').value || "Anonym";
+          const email = document.querySelector('input[name="email"]').value;
+          const categories = [
+            "design",
+            "usability",
+            "originality",
+            "fun",
+            "learning",
+          ];
+          let ratings = {};
+
+          categories.forEach((category) => {
+            const rating = document.querySelector(
+              `input[name="${category}"]:checked`
+            );
+            ratings[category] = rating ? rating.value : "keine Bewertung";
+          });
+
+          const feedback = document.querySelector(
+            'textarea[name="feedback"]'
+          ).value;
+
+          const templateParams = {
+            name: name,
+            email: email,
+            design_rating: ratings.design,
+            usability_rating: ratings.usability,
+            originality_rating: ratings.originality,
+            fun_rating: ratings.fun,
+            learning_rating: ratings.learning,
+            feedback: feedback,
+          };
+
+          emailjs
+            .send("service_i2py69t", "template_j1vzrg2", templateParams)
+            .then(
+              function (response) {
+                document.getElementById("message").innerText =
+                  "Bewertung erfolgreich gesendet!";
+              },
+              function (error) {
+                console.error("EmailJS Fehler:", error);
+                document.getElementById("message").innerText =
+                  "Fehler beim Senden der Bewertung: " + error.text;
+              }
+            );
+        });
+    </script>
+  </body>
+</html>
